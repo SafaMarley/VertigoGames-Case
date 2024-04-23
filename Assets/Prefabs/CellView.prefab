@@ -31,6 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3069349521337413111}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -108,6 +109,7 @@ RectTransform:
   - {fileID: 6381672651519818841}
   - {fileID: 4676036412032038956}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -134,6 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c08990ba56b814db55b5131ac94e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemImage: {fileID: 4816624719612743747}
+  amountText: {fileID: 7252187956937089209}
 --- !u!1 &6779887577329189204
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +169,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3069349521337413111}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
