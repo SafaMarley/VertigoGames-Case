@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7484164998287685749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 420706442511391116}
+  - component: {fileID: 4867632700780911858}
+  - component: {fileID: -8505845661948443184}
+  m_Layer: 5
+  m_Name: ItemResourcesHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &420706442511391116
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484164998287685749}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4867632700780911858
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484164998287685749}
+  m_CullTransparentMesh: 1
+--- !u!114 &-8505845661948443184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484164998287685749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc12e170caf5e9f4f8a514340de699d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemResources:
+  - itemEnum: 0
+    itemResource: {fileID: 11400000, guid: c2e9e1214fc791a4db67688913f516fd, type: 2}
+  - itemEnum: 1
+    itemResource: {fileID: 11400000, guid: cb49bb45bdc1ab44daae988316ae0a90, type: 2}
+  - itemEnum: 2
+    itemResource: {fileID: 11400000, guid: 28149d7eda1738742818d83f719983ba, type: 2}
+  - itemEnum: 3
+    itemResource: {fileID: 11400000, guid: 3c896306a7d4de546908b2f33165d4f3, type: 2}
+  - itemEnum: 4
+    itemResource: {fileID: 11400000, guid: 144079a15e7003d4f9e54dba43058afd, type: 2}
+  - itemEnum: 5
+    itemResource: {fileID: 11400000, guid: fdf9e8e1d7903ca4a8d4f26e02560b0e, type: 2}
+  - itemEnum: 6
+    itemResource: {fileID: 11400000, guid: a2f4d96ac3bc21d4193705cea00287e8, type: 2}
+  - itemEnum: 7
+    itemResource: {fileID: 11400000, guid: 9c7a54c705459e746bded2ca4011ff57, type: 2}

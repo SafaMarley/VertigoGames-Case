@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class MainCanvas : MonoBehaviour
+public class MainContent : MonoBehaviour
 {
     [SerializeField] private DialogHelper dialogHelper;
+    [SerializeField] private ItemResourcesHelper itemResourcesHelper;
+    [SerializeField] private WheelResourcesHelper wheelResourcesHelper;
 
     void Start()
     {
@@ -14,5 +16,7 @@ public class MainCanvas : MonoBehaviour
     private void InitializeHelpers()
     {
         Instantiate(dialogHelper, transform).Init();
+        Instantiate(itemResourcesHelper, transform).Init();
+        Instantiate(wheelResourcesHelper, transform).Init();
     }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4452925364639079000
+--- !u!1 &7484164998287685749
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,53 +8,60 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3612157494070452914}
-  - component: {fileID: 3475770825097565731}
-  - component: {fileID: 6034520912387179579}
+  - component: {fileID: 420706442511391116}
+  - component: {fileID: 4867632700780911858}
+  - component: {fileID: 5111470665992101852}
   m_Layer: 5
-  m_Name: MainCanvas
+  m_Name: WheelResourcesHelper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &3612157494070452914
+--- !u!224 &420706442511391116
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4452925364639079000}
+  m_GameObject: {fileID: 7484164998287685749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3475770825097565731
+--- !u!222 &4867632700780911858
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4452925364639079000}
+  m_GameObject: {fileID: 7484164998287685749}
   m_CullTransparentMesh: 1
---- !u!114 &6034520912387179579
+--- !u!114 &5111470665992101852
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4452925364639079000}
+  m_GameObject: {fileID: 7484164998287685749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f261e470cb886a43acb6ad78497b463, type: 3}
+  m_Script: {fileID: 11500000, guid: 21aca8a67ef8e094893ce40a4454f3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogHelper: {fileID: 8884334638596053460, guid: 13484072f9b778b4d8890bd4b536821d, type: 3}
+  wheelResources:
+  - wheelEnum: 1
+    wheelResource: {fileID: 11400000, guid: 805030b6a7bdda247b4a7a68ba496019, type: 2}
+  - wheelEnum: 2
+    wheelResource: {fileID: 11400000, guid: 04853850212ed2243bb30dc96645264e, type: 2}
+  - wheelEnum: 3
+    wheelResource: {fileID: 11400000, guid: 1fed96baa462465418001957a4f2543d, type: 2}
