@@ -9,6 +9,7 @@ public class WheelFortuneDialog : DialogBase
 {
     const float RoundAngle = 360.0f;
     const int SlotCount = 8;
+    const int ReviveCost = 25;
 
     [SerializeField] private Image wheelBaseImage;
     [SerializeField] private Image wheelCellIndicatorImage;
@@ -19,8 +20,13 @@ public class WheelFortuneDialog : DialogBase
     [SerializeField] private CellView[] cellViews;
 
     [SerializeField] private Button spinButton;
+    [SerializeField] private Button withdrawButton;
+    [SerializeField] private Button giveUpButton;
+    [SerializeField] private Button reviveButton;
 
+    [SerializeField] private Transform inventoryHolderTransform;
     [SerializeField] private Transform earningsHolderTransform;
+    [SerializeField] private Transform revivePopup;
 
     [SerializeField] private ItemView itemViewPrefab;
 
@@ -51,16 +57,34 @@ public class WheelFortuneDialog : DialogBase
         InitializeWheel(WheelEnum.Bronze);
 
         spinButton.onClick.AddListener(OnSpinButtonClicked);
+        withdrawButton.onClick.AddListener(OnPlayerWithdraw);
+        giveUpButton.onClick.AddListener(OnPlayerGiveUp);
+        reviveButton.onClick.AddListener(OnPlayerRevived);
     }
 
     private void OnDestroy()
     {
         spinButton.onClick.RemoveAllListeners();
+        withdrawButton.onClick.RemoveAllListeners();
+        giveUpButton.onClick.RemoveAllListeners();
+        reviveButton.onClick.RemoveAllListeners();
     }
 
     private void InitializeWheel(WheelEnum wheelType)
     {
         if (_currentWheelType == wheelType) return;
+
+        switch (wheelType)
+        {
+            case WheelEnum.Silver:
+            case WheelEnum.Gold:
+                withdrawButton.interactable = true;
+                break;
+
+            case WheelEnum.Bronze:
+                withdrawButton.interactable = false;
+                break;
+        }
 
         _currentWheelType = wheelType;
         WheelResources wheelResource = WheelResourcesHelper.Instance.GetItemResource(_currentWheelType);
@@ -100,10 +124,8 @@ public class WheelFortuneDialog : DialogBase
 
         if ((ItemEnum) content.itemId == ItemEnum.Grenade)
         {
-            _comboCount = 1;
-            InitializeWheel(WheelEnum.Bronze);
-
-            OnPlayerLeave();
+            revivePopup.gameObject.SetActive(true);
+            reviveButton.interactable = Inventory.GetItemAmount((int) ItemEnum.Cash) > ReviveCost;
         }
         else
         {
@@ -116,14 +138,49 @@ public class WheelFortuneDialog : DialogBase
             else InitializeWheel(WheelEnum.Bronze);
         }
 
-        LogInventory();
+        //LogInventory();
+    }
+
+    private void OnPlayerWithdraw()
+    {
+        ResetPot(true);
+        DisplayInventory();
+
+        _comboCount = 1;
+        InitializeWheel(WheelEnum.Bronze);
+    }
+
+    private void OnPlayerGiveUp()
+    {
+        revivePopup.gameObject.SetActive(false);
+        ResetPot(false);
+
+        _comboCount = 1;
+        InitializeWheel(WheelEnum.Bronze);
+    }
+
+    private void OnPlayerRevived()
+    {
+        revivePopup.gameObject.SetActive(false);
+        Inventory.UpdateInventory((int)ItemEnum.Cash, -25);
+        DisplayInventory();
     }
 
     private void LogInventory()
     {
         foreach (var itemKeyValuePair in _currentPotDictionary)
-        {
             Debug.LogError($"Item : {(ItemEnum)itemKeyValuePair.Key} | Amount : {itemKeyValuePair.Value}");
+    }
+
+    private void DisplayInventory()
+    {
+        foreach (Transform child in inventoryHolderTransform.transform)
+            Destroy(child.gameObject);
+
+        foreach (var itemKeyValuePair in Inventory.GetCurrentInventory())
+        {
+            var itemView = Instantiate(itemViewPrefab, inventoryHolderTransform);
+            itemView.Init(itemKeyValuePair.Key, itemKeyValuePair.Value);
         }
     }
 
@@ -138,18 +195,15 @@ public class WheelFortuneDialog : DialogBase
         itemView.Init(itemId, itemAmount);
     }
 
-    private void OnPlayerLeave()
+    private void ResetPot(bool transferPotToInventory)
     {
-        _currentPotDictionary.Clear();
-
-        foreach (var itemKeyValuePair in _currentPotDictionary.Where(x => x.Value > 0))
-        {
-            Inventory.AddItemToInventory(itemKeyValuePair.Key, itemKeyValuePair.Value);
-        }
-
         foreach (Transform child in earningsHolderTransform.transform)
-        {
             Destroy(child.gameObject);
-        }
+
+        if (transferPotToInventory)
+            foreach (var itemKeyValuePair in _currentPotDictionary.Where(x => x.Value > 0))
+                Inventory.AddItemToInventory(itemKeyValuePair.Key, itemKeyValuePair.Value);
+
+        _currentPotDictionary.Clear();
     }
 }
